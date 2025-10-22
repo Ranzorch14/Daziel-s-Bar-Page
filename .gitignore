@@ -1,0 +1,5 @@
+node_modules/
+assets/optimized/
+npm-debug.log
+dist/
+.vscode/

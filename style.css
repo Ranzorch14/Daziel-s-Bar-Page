@@ -1,0 +1,296 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  scroll-behavior: smooth;
+  background-image: radial-gradient(circle at top left, #330000 0%, transparent 40%), 
+                    radial-gradient(circle at bottom right, #660000 0%, transparent 40%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+:root {
+  --brand-red: #e60000;
+}
+
+/* Contenedor principal para asegurar altura mínima */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Header y navegación */
+header {
+  background-color: #000000;
+  padding: 1em 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 2em;
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: var(--brand-red);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+/* contact links are styled via .contact-link or inherited from nav/link rules */
+
+nav a:hover {
+  color: var(--brand-red);
+  transform: scale(1.1);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--brand-red);
+  bottom: -4px;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Accesibilidad: se usan reglas más específicas :focus-visible en los componentes */
+.seccion {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  padding: 4em 2em;
+  max-width: 1200px;
+  margin: auto;
+  background-color: #000000;
+}
+
+.seccion.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.seccion h1,
+.seccion h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 1em;
+  font-size: 2em;
+}
+
+/* Inicio */
+.contenido-inicio {
+  text-align: center;
+}
+
+.logo-img {
+  width: 180px;
+  margin-bottom: 1em;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.8em 2em;
+  background-color: #ff0000;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #b30000;
+}
+
+.btn:focus-visible {
+  outline: 3px solid rgba(230, 0, 0, 0.6);
+  outline-offset: 3px;
+}
+
+/* Servicios */
+.servicio {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin-bottom: 2em;
+  align-items: center;
+  padding: 1.2em;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.01);
+}
+
+.servicio img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.servicio img.pina-colada {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 400px) {
+  .pina-colada {
+    width: 50%;
+    max-width: 400px; /* Limita el tamaño máximo */
+    display: block;
+    margin: auto;
+  }
+}
+
+.texto-servicio {
+  flex: 1;
+}
+
+.texto-servicio h3 {
+  color: var(--brand-red);
+  margin-bottom: 0.5em;
+}
+
+.texto-servicio ul {
+  margin-left: 1em;
+  color: #ffffff;
+}
+
+/* Contacto */
+.contacto-info {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.contacto-icono {
+  display: inline-block;
+  margin-bottom: 1em;
+  font-size: 1.5em;
+  color: var(--brand-red);
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.contacto-icono:hover {
+  transform: scale(1.2);
+}
+
+.contacto-icono:focus-visible {
+  outline: 3px solid rgba(230, 0, 0, 0.6);
+  outline-offset: 3px;
+}
+
+
+/* SVG icons inherit color */
+.contacto-icono svg {
+  vertical-align: middle;
+  margin-right: 0.4em;
+  color: var(--brand-red);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+/* Estilos para links de contacto: destacar en hover/focus */
+.contact-link {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.15em 0.25em;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.12s ease;
+}
+.contact-link:hover,
+.contact-link:focus-visible {
+  background-color: rgba(255,0,0,0.12);
+  color: #ffcccc;
+  transform: translateY(-2px);
+}
+
+/* Mejor soporte de foco para navegadores: focus-visible cuando es por teclado */
+.contact-link:focus {
+  outline: none;
+}
+
+/* focus-visible para botones/enlaces principales */
+.btn:focus-visible,
+.contacto-icono:focus-visible,
+.contact-link:focus-visible {
+  outline: 3px solid rgba(230, 0, 0, 0.6);
+  outline-offset: 3px;
+}
+
+/* Mensaje para usuarios sin JavaScript */
+.noscript {
+  background: #221111;
+  color: #fff1f1;
+  padding: 0.8em 1em;
+  text-align: center;
+  border-top: 1px solid rgba(255,0,0,0.2);
+}
+
+/* Footer fijo al fondo */
+footer {
+  text-align: center;
+  padding: 2em;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "daziels-bar-site",
+  "version": "1.0.0",
+  "description": "Sitio estático de Daziel's Bar (página estática con HTML/CSS/JS)",
+  "scripts": {
+    "start": "live-server --port=5500",
+    "serve": "python -m http.server 8000",
+    "optimize-images": "node scripts/optimize-images.js",
+    "lint:css": "stylelint \"**/*.css\" || true",
+    "lint:js": "eslint . || true",
+    "test": "jest --color --runInBand"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "glob": "^10.2.7",
+    "jest": "^30.2.0",
+    "live-server": "^1.2.0",
+    "sharp": "^0.32.1",
+    "stylelint": "^14.0.0",
+    "stylelint-config-recommended": "^9.0.0"
+  }
+}
